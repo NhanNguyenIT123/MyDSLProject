@@ -39,6 +39,7 @@ def create_github_repo(name, visibility="public"):
 
 def connect_github(name):
     url = f"https://github.com/{USERNAME}/{name}.git"
+    run("git remote remove origin")
     run(f"git remote add origin {url}")
     print(f"[OK] Connected remote: {url}")
 
