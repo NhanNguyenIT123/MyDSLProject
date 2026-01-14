@@ -38,7 +38,7 @@ def create_github_repo(name, visibility="public"):
         print("[ERROR] Failed:", r.json())
 
 def connect_github(name):
-    url = f"https://github.com/{USERNAME}/{name}.git"
+    url = f"https://{TOKEN}@github.com/{USERNAME}/{name}.git"
     run(f"git remote add origin {url}")
     print(f"[OK] Connected remote: {url}")
 
