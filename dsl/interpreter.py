@@ -13,5 +13,17 @@ def execute(ast):
     elif ast.command == "PULL":
         pull()
 
+    elif ast.command == "STATUS":
+        status()
+
+    elif ast.command == "STAGE_ALL":
+        stage_all()
+
+    elif ast.command == "COMMIT":
+        commit(ast.args[0])
+
+    elif ast.command == "LOG":
+        log()
+
     else:
         print("Unknown AST Command")

@@ -24,5 +24,23 @@ def parse(tokens):
     # pull
     if first == "PULL":
         return ASTNode("PULL")
+    
+    # status
+    if first == "STATUS":
+        return ASTNode("STATUS")
+
+    # stage all
+    if first == "STAGE":
+        return ASTNode("STAGE_ALL")
+
+    # commit "message"
+    if first == "COMMIT":
+        # everything after commit is the message
+        msg = " ".join([t.value for t in tokens[1:]]).strip('"')
+        return ASTNode("COMMIT", [msg])
+
+    # log
+    if first == "LOG":
+        return ASTNode("LOG")
 
     raise Exception("Unknown command")

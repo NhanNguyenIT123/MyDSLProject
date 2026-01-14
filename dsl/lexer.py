@@ -12,7 +12,12 @@ KEYWORDS = {
     "finish": "FINISH",
     "feature": "FEATURE",
     "push": "PUSH",
-    "pull": "PULL"
+    "pull": "PULL",
+    "status": "STATUS",
+    "stage": "STAGE",
+    "all": "ALL",
+    "commit": "COMMIT",
+    "log": "LOG"
 }
 
 def tokenize(code):

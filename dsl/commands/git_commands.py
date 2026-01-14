@@ -21,3 +21,20 @@ def push():
 def pull():
     repo.git.pull()
     print("[OK] Pulled latest changes")
+
+def status():
+    print(repo.git.status())
+
+def stage_all():
+    repo.git.add(".")
+    print("[OK] Staged all changes")
+
+def commit(message):
+    try:
+        repo.git.commit("-m", message)
+        print(f"[OK] Commit created: {message}")
+    except Exception as e:
+        print("[ERROR] commit failed:", e)
+
+def log():
+    print(repo.git.log("--oneline", "--graph", "--decorate", "-10"))
