@@ -1,4 +1,4 @@
-from dsl.lexer import tokenize
+from dsl.tokenizer import tokenize
 from dsl.parser import parse
 from dsl.interpreter import execute
 

@@ -1,4 +1,8 @@
-from .commands.git_commands import *
+from .commands.flow_commands import *
+from .commands.commit_commands import *
+from .commands.sync_commands import *
+from .commands.info_commands import *
+from .commands.github_commands import *
 
 def execute(ast):
     if ast.command == "START_FEATURE":
@@ -24,6 +28,18 @@ def execute(ast):
 
     elif ast.command == "LOG":
         log()
+    
+    elif ast.command == "INIT":
+        init_repo()
+
+    elif ast.command == "CREATE_GITHUB":
+        create_github_repo(ast.args[0], ast.args[1])
+
+    elif ast.command == "CONNECT_GITHUB":
+        connect_github(ast.args[0])
+
+    elif ast.command == "PUBLISH":
+        publish()
 
     else:
         print("Unknown AST Command")

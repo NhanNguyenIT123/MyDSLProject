@@ -43,4 +43,19 @@ def parse(tokens):
     if first == "LOG":
         return ASTNode("LOG")
 
+    if first == "INIT":
+        return ASTNode("INIT")
+
+    if first == "CREATE":
+        name = tokens[2].value
+        visibility = tokens[3].value if len(tokens) > 3 else "public"
+        return ASTNode("CREATE_GITHUB", [name, visibility])
+
+    if first == "CONNECT":
+        return ASTNode("CONNECT_GITHUB", [tokens[2].value])
+
+    if first == "PUBLISH":
+        return ASTNode("PUBLISH")
+
+
     raise Exception("Unknown command")
