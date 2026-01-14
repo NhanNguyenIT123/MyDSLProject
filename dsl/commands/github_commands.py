@@ -6,7 +6,7 @@ from ..utils import run
 load_dotenv()
 
 TOKEN = os.getenv("GITHUB_TOKEN")
-USERNAME = os.getenv("USERNAME")
+USERNAME = os.getenv("GITHUB_USERNAME")
 
 headers = {
     "Authorization": f"token {TOKEN}",
