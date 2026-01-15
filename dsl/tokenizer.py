@@ -61,6 +61,25 @@ def tokenize(command):
     elif first == "publish":
         tokens.append(Token("PUBLISH","publish"))
 
+    elif first == "discard":
+        tokens.append(Token("DISCARD", "discard"))
+        tokens.append(Token("IDENT", parts[1]))
+
+    elif first == "undo":
+        tokens.append(Token("UNDO", "undo"))
+        if len(parts) > 1 and parts[1].lower() == "commit":
+            tokens.append(Token("COMMIT", "commit"))
+        else:
+            raise Exception("Expected: undo commit")
+    
+    elif first == "force":
+        tokens.append(Token("FORCE", "force"))
+        if len(parts) > 1 and parts[1].lower() == "reset":
+            tokens.append(Token("RESET", "reset"))
+            if len(parts) > 2:
+                tokens.append(Token("IDENT", parts[2]))  # commit hash / HEAD~1
+        else:
+            raise Exception("Expected: force reset [commit]")
 
     else:
         raise Exception("Unknown command")

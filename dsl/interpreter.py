@@ -41,5 +41,24 @@ def execute(ast):
     elif ast.command == "PUBLISH":
         publish()
 
+    elif ast.command == "DISCARD":
+        discard_all()
+
+    elif ast.command == "DISCARD":
+        target = ast.args[0]
+        if target == "all":
+            discard_all()
+        else:
+            discard_file(target)
+
+    elif ast.command == "UNDO_COMMIT":
+        undo_commit()
+
+    elif ast.command == "FORCE_RESET":
+        if ast.args:
+            force_reset(ast.args[0])
+        else:
+            force_reset()
+
     else:
         print("Unknown AST Command")

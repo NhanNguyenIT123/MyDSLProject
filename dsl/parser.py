@@ -52,10 +52,22 @@ def parse(tokens):
         return ASTNode("CREATE_GITHUB", [name, visibility])
 
     if first == "CONNECT":
+        print(tokens)
         return ASTNode("CONNECT_GITHUB", [tokens[2].value])
 
     if first == "PUBLISH":
         return ASTNode("PUBLISH")
+    
+    if first == "DISCARD":
+        return ASTNode("DISCARD", [tokens[1].value])
+    
+    if first == "UNDO" and tokens[1].type == "COMMIT":
+        return ASTNode("UNDO_COMMIT")
+
+    if first == "FORCE" and tokens[1].type == "RESET":
+        if len(tokens) > 2:
+            return ASTNode("FORCE_RESET", [tokens[2].value])
+        return ASTNode("FORCE_RESET")
 
 
     raise Exception("Unknown command")
