@@ -1,8 +1,8 @@
 from .utils import run
 
 def is_clean():
-    r = run("git status --porcelain")
-    return r.stdout.strip() == ""
+    status = run("git status --porcelain", capture=True)
+    return status == ""
 
 def ensure_clean():
     if not is_clean():
