@@ -63,7 +63,10 @@ def tokenize(command):
 
     elif first == "discard":
         tokens.append(Token("DISCARD", "discard"))
-        tokens.append(Token("IDENT", parts[1]))
+        if len(parts) > 1:
+            tokens.append(Token("IDENT", parts[1]))
+        else:
+            tokens.append(Token("IDENT", "all"))
 
     elif first == "undo":
         tokens.append(Token("UNDO", "undo"))

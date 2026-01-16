@@ -42,9 +42,6 @@ def execute(ast):
         publish()
 
     elif ast.command == "DISCARD":
-        discard_all()
-
-    elif ast.command == "DISCARD":
         target = ast.args[0]
         if target == "all":
             discard_all()
