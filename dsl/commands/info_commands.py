@@ -1,9 +1,9 @@
 from ..utils import run
 
 def status():
-    r = run("git status")
-    print(r.stdout)
+    output = run("git status", capture=True)
+    print(output)
 
 def log():
-    r = run("git --no-pager log --oneline -10")
-    print(r.stdout)
+    output = run("git --no-pager log --oneline -10", capture=True)
+    print(output)

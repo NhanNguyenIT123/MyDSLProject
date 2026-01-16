@@ -1,4 +1,15 @@
 import subprocess
 
-def run(cmd):
-    return subprocess.run(cmd, shell=True, capture_output=True, text=True)
+def run(cmd, capture=False):
+    if capture:
+        result = subprocess.run(
+            cmd,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        return result.stdout.strip()
+    else:
+        subprocess.run(cmd, shell=True)
+        return None

@@ -5,8 +5,8 @@ def stage_all():
     print("[OK] staged all")
 
 def commit(msg):
-    r = run(f'git commit -m "{msg}"')
-    print(r.stdout)
+    output = run(f'git commit -m "{msg}"', capture=True)
+    print(output)
 
 def undo_commit():
     run("git reset --soft HEAD~1")
